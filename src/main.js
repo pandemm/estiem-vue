@@ -3,13 +3,17 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import Navbar from './components/navbar';
 
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  data: {
+    currentRoute: window.location.pathname,
+  },
   router,
   template: '<App/>',
-  components: { App },
+  components: { App, Navbar },
 });
