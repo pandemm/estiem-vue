@@ -46,7 +46,7 @@
     color: #d0d0d0;
     text-transform: uppercase;
 }
-.router-link-active {
+li .router-link-active {
     padding: 7px 9px;
     border: 1px solid #fff;
     color: #205e44;

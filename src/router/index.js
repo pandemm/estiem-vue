@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import navbar from '@/components/navbar';
-import eventlist from '../components/eventlist';
+import eventspage from '../components/events/eventspage';
+import eventroutes from '../components/events/eventroutes';
 import homepage from '../components/pages/homepage';
 
 Vue.use(Router);
@@ -12,21 +12,16 @@ export default new Router({
     {
       path: '/',
       name: 'foo',
-      components: {
-        default: homepage,
-        navbar,
-      },
+      component: homepage,
     },
     {
       path: '/events',
       name: 'eventlist',
-      component: {
-        default: eventlist,
-        navbar,
-      },
+      component: eventspage,
+      children: eventroutes,
     },
     {
-      //Redirects all other paths to the homepage
+      // Redirects all other paths to the homepage
       path: '*',
       redirect: '/',
     },

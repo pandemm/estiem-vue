@@ -3,7 +3,6 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import Navbar from './components/navbar';
 
 Vue.config.productionTip = false;
 
@@ -15,5 +14,5 @@ new Vue({
   },
   router,
   template: '<App/>',
-  components: { App, Navbar },
-});
+  components: { App },
+}).$mount('#app');
