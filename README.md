@@ -2,6 +2,12 @@
 
 > A Vue.js project
 
+## Required programs to setup
+
+*A text editor Visual Studio Code for example, https://code.visualstudio.com/
+*npm, package manager, https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm
+*git, version control, https://git-scm.com/
+
 ## Build Setup
 
 ``` bash
