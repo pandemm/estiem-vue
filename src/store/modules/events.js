@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Vue from 'vue'
 
 // Initial state
 const state = {
@@ -9,6 +10,18 @@ const state = {
 const getters = {
   events: () => state.events,
   internalEvents: () => state.events,
+  event: (id) => {
+    console.log("getting")
+    let event = state.events.find(event => event.Id == id);
+    console.log(event);
+    return state.events.find(event => event.Id == id)
+  },
+  getEventById: (state, getters) => (id) => {
+    console.log(id);
+    let event = state.events.find(event => event.Id == id);
+    console.log(event);
+    return event;
+  }
 };
 
 // Actions
@@ -29,15 +42,32 @@ const actions = {
   getUsers: (context) => {
     context.commit('fetch');
   },
+  toggleSelected: ({ commit }, id) => {
+    // Insert axios post request here
+    commit('TOGGLE_SELECTED', id);
+  }
 };
 
 // Mutations
 const mutations = {
-  'FETCH_EVENTS' (state, payload) {
+  'FETCH_EVENTS'(state, payload) {
     console.log('mutate');
     console.log(payload);
     state.events = payload;
   },
+  'TOGGLE_SELECTED'(state, id) {
+    let event = state.events.find(event => event.Id == id)
+    console.log(event);
+    console.log("toggleselect");
+    if (!event.isSelected) {
+      Vue.set(event, "isSelected", true)
+    }
+    else 
+    {
+      event.isSelected = false;
+    }
+
+  }
 };
 
 export default {

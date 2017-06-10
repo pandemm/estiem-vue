@@ -1,9 +1,11 @@
 <template>
-  <eventlist></eventlist>
+<div id="eventspage">
+  <router-view></router-view>
+</div>
 </template>
 
 <script>
-import eventlist from './eventlist';
+import eventlist from './eventlist.vue';
 export default {
   data () {
     return {
@@ -17,11 +19,4 @@ export default {
 </script>
 
 <style>
-.example {
-  color: red;
-}
 </style>
-
-<custom1>
-  This could be e.g. documentation for the component.
-</custom1>

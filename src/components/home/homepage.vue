@@ -1,23 +1,20 @@
 <template>
-  <div class="example">{{ msg }}</div>
+  <div class="homepage">
+    Welcome to the homepage.</br>
+    We can have some text here.</br>
+    It would also be good to have some components.
+  </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      msg: 'Hello world!'
+      msg: 'Welcome to the new ESTIEM'
     }
   }
 }
 </script>
 
 <style>
-.example {
-  color: red;
-}
 </style>
-
-<custom1>
-  This could be e.g. documentation for the component.
-</custom1>
