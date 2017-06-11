@@ -3,7 +3,7 @@
     <router-link class="event-menu-item" :to="!info ? '/events/info/' + id + '#event' + id   : '/events'">Info</router-link>
     <router-link class="event-menu-item" to="/events/agenda">Agenda</router-link>
     <router-link class="event-menu-item" :to="!travel ? '/events/travel/' + id : '/events'">Travel</router-link>
-    <router-link class="event-menu-item" to="/events/participants">Participants</router-link>
+    <router-link class="event-menu-item" :to="'/events/participants/' + id">Participants</router-link>
   </div>
 </template>
 
@@ -34,7 +34,6 @@ export default {
   },
   computed: {
     info: function () {
-      console.log(this.$route.path);
       if (this.$route.path.indexOf("/info/" + this.id) != -1) {
         return true;
       }
@@ -43,7 +42,6 @@ export default {
       }
     },
     travel: function () {
-      console.log(this.$route.path);
       if (this.$route.path.indexOf("/travel/" + this.id) != -1) {
         return true;
       }

@@ -11,14 +11,6 @@
               <v-list-tile-title v-text="item.title"></v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile value="true" :href="item.url" router v-if="drawer">
-            <v-list-tile-action>
-              <v-icon v-html="item.icon"></v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title v-text="item.title"></v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -61,7 +53,7 @@ export default {
       rightDrawer: false,
       title: 'ESTIEM',
       items: [
-        { icon: 'home', title: 'Home', url: '/' },
+        { icon: 'home', title: 'Homea', url: '/' },
         { icon: 'event', title: 'Events', url: '/events/eventlist' },
         { icon: 'forum', title: 'Forum', url: '/forum' },
         { icon: 'account_circle', title: 'My profile', url: '/Internal/default.aspx?PageId=517' },

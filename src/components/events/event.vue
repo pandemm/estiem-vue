@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div :id="'event' + event.Id" class="event-box">
     <div style="display: flex;">
       <div>
@@ -9,7 +9,7 @@
         </br>
       </Div>
       <router-link v-if="applicationopen" :to="'/events/apply/' + event.Id">
-        <v-btn class="event-apply"  outline>Apply</v-btn>
+        <v-btn class="event-apply" outline>Apply</v-btn>
       </router-link>
       <v-btn icon class="event-star-button" @click.native="toggleStar">
         <v-icon light right class="event-star text--darken-2" v-bind:class="{ selected: event.isSelected }">stars</v-icon>
@@ -18,14 +18,17 @@
     <eventsmenu :id="event.Id"></eventsmenu>
     <eventinfo v-if="info" :description="event.Description"></eventinfo>
     <eventtravel v-if="travel"></eventtravel>
+    <eventparticipants v-if="participants"></eventparticipants>
   </div>
 </template>
 
-<script>
+  <script>
 import moment from 'moment';
 import eventsmenu from './eventsmenu.vue';
 import eventinfo from './eventinfo.vue';
 import eventtravel from './eventtravel.vue';
+import eventparticipants from './event-participants.vue';
+
 export default {
   data() {
     return {
@@ -39,7 +42,8 @@ export default {
   components: {
     eventsmenu,
     eventinfo,
-    eventtravel
+    eventtravel,
+    eventparticipants,
   },
   filters: {
     formatdate(value) {
@@ -60,7 +64,6 @@ export default {
       }
     },
     info: function () {
-      console.log(this.$route.path);
       if (this.$route.path.indexOf("/info/" + this.event.Id) != -1) {
         return true;
       }
@@ -69,8 +72,15 @@ export default {
       }
     },
     travel: function () {
-      console.log(this.$route.path);
       if (this.$route.path.indexOf("/travel/" + this.event.Id) != -1) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    },
+    participants: function () {
+      if (this.$route.path.indexOf("/participants/" + this.event.Id) != -1) {
         return true;
       }
       else {
@@ -88,7 +98,7 @@ export default {
 }
 </script>
 
-<style>
+  <style>
 .event-details {
   display: none;
 }
