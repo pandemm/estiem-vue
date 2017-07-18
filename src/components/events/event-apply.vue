@@ -45,7 +45,7 @@ export default {
         Visa_Birthdate: moment(),
         Visa_Birthplace: "",
         Visa_Nationality: "",
-        Visa_PassportNumber: "", 
+        Visa_PassportNumber: "",
         Visa_PassportExpiryDate: moment(),
         Visa_PassportIssuedDate: moment(),
         Visa_PassportIssuedBy: "",
@@ -72,7 +72,7 @@ export default {
       }
       console.log("Post");
       let json = JSON.stringify(this.form);
-      axios.post('http://localhost:8081/internal/mvc/events/apply', json)
+      axios.post('/internal/eventsapi/apply', json)
         .then(function (response) {
           console.log(response);
         })

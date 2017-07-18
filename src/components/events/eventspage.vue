@@ -1,5 +1,5 @@
 <template>
-<div id="eventspage">
+<div>
   <router-view></router-view>
 </div>
 </template>

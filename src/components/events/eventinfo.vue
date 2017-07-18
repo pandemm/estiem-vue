@@ -1,7 +1,9 @@
 <template>
     <div>
         <div id="infobox">
-    
+            Participation fee: {{event.ParticipationFee}}</br>
+            Application period: {{event.ApplicationStartDate}} to {{event.ApplicationEndDate}}
+            Registered participants: Get number of participants/{{event.MaxParticipants}}
         </div>
         <div id="description" v-html="event.Description">
             a

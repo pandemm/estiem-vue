@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import event from './event.vue';
 //import { mapGetters } from 'vuex';
 export default {
@@ -21,20 +20,6 @@ export default {
       msg: 'Helloeeesworld!',
     }
   },
-  // methods: {
-  //   fetchevents() {
-  //     axios.get('https://www.estiem.org/Internal/mvc/events/getfutureevents')
-  //       .then(response => {
-  //         this.events = response.data;
-  //         console.log(response.data);
-  //       })
-  //       .catch(e => {
-  //         console.log(e);
-  //       }
-
-  //       )
-  //   }
-  // },
   components: {
     event
   },
@@ -49,7 +34,4 @@ export default {
 </script>
 
 <style>
-  #eventlist {
-    width: 800px;
-  }
 </style>

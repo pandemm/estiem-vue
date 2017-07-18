@@ -3,7 +3,7 @@
     <v-navigation-drawer :temporary="temporary" :permanent="!temporary" clipped v-model="drawer" :isActive='false' enable-resize-watcher :hide-overlay="true">
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i">
-          <v-list-tile value="true" :href="item.url" router>
+          <v-list-tile value="true" :href="item.url" :router="item.router">
             <v-list-tile-action>
               <v-icon v-html="item.icon"></v-icon>
             </v-list-tile-action>
@@ -28,7 +28,7 @@
       <v-container fluid>
         <v-slide-y-transition mode="out-in">
           <v-layout>
-            <router-view style="margin: auto;">
+            <router-view class="content">
             </router-view>
           </v-layout>
         </v-slide-y-transition>
@@ -42,7 +42,7 @@
 
 <script>
 import estiemnavigationdrawer from './layout/estiemnavigationdrawer.vue'
-import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -53,12 +53,12 @@ export default {
       rightDrawer: false,
       title: 'ESTIEM',
       items: [
-        { icon: 'home', title: 'Homea', url: '/' },
-        { icon: 'event', title: 'Events', url: '/events/eventlist' },
-        { icon: 'forum', title: 'Forum', url: '/forum' },
+        { icon: 'home', title: 'Home', url: '/', router: true },
+        { icon: 'event', title: 'Events', url: '/events', router: true },
+        { icon: 'forum', title: 'Forum', url: '/forum', router: true },
         { icon: 'account_circle', title: 'My profile', url: '/Internal/default.aspx?PageId=517' },
-        { icon: 'info', title: 'About ESTIEM', url: '/about' }
-      ],
+        { icon: 'info', title: 'About ESTIEM', url: '/about', router: true }
+      ]
 
     }
   },
@@ -76,6 +76,7 @@ export default {
       eventtypes: 'all',
     };
     this.$store.dispatch('fetchEvents', params);
+    this.$store.dispatch('getUser');
     console.log(this.events);
     console.log("creatd");
   },
@@ -90,22 +91,53 @@ export default {
         return true;
       }
     },
-  },
-  ready() {
-    console.log("ready");
   }
 
 }
 </script>
 
 <style lang="stylus">
-  @import './stylus/main'
+  @import './stylus/base.styl'
 
 .toolbar {
-  background-color: #205e44;
+  background-color: estiem-green;
+}
+
+#toolbar-search {
+  color: white;
 }
 
 .footer {
-  background-color: #205e44;
+  background-color: primaryColor  
 }
+
+.content {
+  width: 800px;
+}
+
+.layout {
+  justify-content: center;
+}
+
+// Workaround that the content doesnt go under the drawer. A fix should be released later in Vuetify.
+.navigation-drawer
+  &--persistent, &--permanent
+    &.navigation-drawer--open:not(.navigation-drawer--is-mobile):not(.navigation-drawer--right)
+      &:not(.navigation-drawer--clipped)
+        ~ .toolbar
+          padding-left: 300px
+
+      ~ main,
+      ~ .footer:not(.footer--fixed):not(.footer--absolute)
+        padding-left: 300px
+
+    &.navigation-drawer--open.navigation-drawer--right
+      &:not(.navigation-drawer--clipped)
+        + .toolbar
+          padding-right: 300px
+
+      ~ main,
+      ~ .footer:not(.footer--fixed):not(.footer--absolute)
+        padding-right: 300px
+
 </style>

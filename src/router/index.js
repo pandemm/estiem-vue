@@ -13,6 +13,7 @@ Vue.use(Router);
 
 export default new Router({
   mode: 'history',
+  base: '/internal/',
   routes: [
     {
       path: '/',
@@ -22,7 +23,7 @@ export default new Router({
     {
       path: '/events',
       name: 'eventlist',
-      component: eventlist,
+      component: eventspage,
       children: eventroutes,
     },
     {

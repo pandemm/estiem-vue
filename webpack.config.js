@@ -10,7 +10,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'public': path.resolve(__dirname, './public')
+      'public': path.resolve(__dirname, './public'),
+      'styles': path.resolve(__dirname, './src/stylus/')
     }
   },
   module: {
@@ -49,7 +50,10 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      'styles': path.resolve(__dirname, './src/stylus'),
+      'assets': path.resolve(__dirname, './src/assets'),
+      'components': path.resolve(__dirname, './src/components')
     }
   },
   devServer: {

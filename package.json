@@ -12,9 +12,11 @@
     "axios": "^0.16.1",
     "ckeditor": "^4.6.2",
     "moment": "^2.18.1",
+    "typeahead.js": "^0.11.1",
     "vue": "^2.2.1",
     "vue-ckeditor2": "^1.0.5",
     "vue-router": "^2.5.3",
+    "vue-typeahead": "^2.3.2",
     "vuetify": "^0.12.0",
     "vuex": "^2.3.1"
   },

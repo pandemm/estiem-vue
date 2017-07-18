@@ -6,7 +6,7 @@ import eventParticipants from './event-participants.vue';
 
 const eventroutes = [
   {
-    path: 'eventlist',
+    path: '',
     name: 'eventlist',
     component: eventlist,
   },

@@ -21,17 +21,35 @@ const getters = {
     let event = state.events.find(event => event.Id == id);
     console.log(event);
     return event;
-  }
+  },
+  getEventParticipantsById: (state, getters) => (id) => {
+    console.log(id);
+    this.getEventById(id);
+    let eps = state.events.find(event => event.Id == id);
+    console.log(event);
+    return event;
+  },
 };
 
 // Actions
 const actions = {
   fetchEvents({ commit }, params) {
     let events;
-    let url = 'https://www.estiem.org/Internal/mvc/events/getfutureevents';
+    let url = 'https://www.estiem.org/Internal/eventsapi/getfutureevents';
     if (params.eventtypes) {
       url += '?';
     }
+    axios.get(url)
+      .then((response) => {
+        events = response.data;
+        console.log(events);
+        commit('FETCH_EVENTS', events);
+      });
+  },
+  fetchEventParticipants({ commit }, id) {
+    let eps;
+    let url = 'https://www.estiem.org/Internal/eventsapi/geteventparticipants?ìd=' + id;
+    console.log(url);
     axios.get(url)
       .then((response) => {
         events = response.data;
@@ -62,8 +80,7 @@ const mutations = {
     if (!event.isSelected) {
       Vue.set(event, "isSelected", true)
     }
-    else 
-    {
+    else {
       event.isSelected = false;
     }
 

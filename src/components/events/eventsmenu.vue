@@ -1,9 +1,8 @@
 <template>
   <div class="event-menu">
     <router-link class="event-menu-item" :to="!info ? '/events/info/' + id + '#event' + id   : '/events'">Info</router-link>
-    <router-link class="event-menu-item" to="/events/agenda">Agenda</router-link>
     <router-link class="event-menu-item" :to="!travel ? '/events/travel/' + id : '/events'">Travel</router-link>
-    <router-link class="event-menu-item" :to="'/events/participants/' + id">Participants</router-link>
+    <router-link class="event-menu-item" :to="!participants ? '/events/participants/' + id : '/events'">Participants</router-link>
   </div>
 </template>
 

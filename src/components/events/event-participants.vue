@@ -44,7 +44,7 @@ export default {
   methods: {
     fetchEventParticipants(eventid) {
       let eps;
-      let url = 'http://localhost/internal/mvc/events/geteventparticipants?id=' + this.eventid;
+      let url = '/internal/eventsapi/geteventparticipants?id=' + this.eventid;
       console.log(url);
       axios.get(url)
         .then((response) => {
@@ -83,11 +83,6 @@ export default {
     }
   },
   created() {
-    let ckeditor = document.createElement('script');
-    console.log("creatd");
-
-    ckeditor.setAttribute('src', "//cdn.ckeditor.com/4.6.2/full/ckeditor.js");
-    document.head.appendChild(ckeditor);
     this.fetchEventParticipants(this.eventid);
   },
   filters: {
@@ -110,5 +105,9 @@ export default {
 #participants-table a:hover {
   text-decoration: underline;
   color: #205E44;
+}
+
+#participants-table {
+  max-width: 100%
 }
 </style>
