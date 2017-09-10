@@ -1,4 +1,20 @@
+<<<<<<< HEAD
 <template>
+  <div class="card event-details" style="flex-basis:20%; flex-grow: 0; margin: 5px;">
+    <router-link class="card-link" :to="'/events/details/' + event.id">
+      <img class="card-img-top" :src="'https://www.estiem.org/Internal/GetFile.aspx?File=Files/Committees/ITC/IT%20Project/images/' + event.place + '.jpg'" style="width:100%">
+      <div class="card-block">
+        <h4 class="card-title event-name">{{event.name}}</h4>
+        <div class="card-text event-text">
+          <i class="material-icons" style="vertical-align:middle">date_range</i>
+          {{event.startDate | formatdate}} to {{event.endDate | formatdate}} </br>
+          <i class="material-icons" style="vertical-align:middle">place</i>{{event.place}}</div>
+        <div v-if="applicationopen" class="card-text event-text">
+          <i class="material-icons" style="vertical-align:middle">check</i> Application open</div>
+      </div>
+    </router-link>
+=======
+  <template>
   <div :id="'event' + event.Id" class="event-box">
     <div style="display: flex;">
       <div>
@@ -9,7 +25,7 @@
         </br>
       </Div>
       <router-link v-if="applicationopen" :to="'/events/apply/' + event.Id">
-        <v-btn class="event-apply"  outline>Apply</v-btn>
+        <v-btn class="event-apply" outline>Apply</v-btn>
       </router-link>
       <v-btn icon class="event-star-button" @click.native="toggleStar">
         <v-icon light right class="event-star text--darken-2" v-bind:class="{ selected: event.isSelected }">stars</v-icon>
@@ -18,18 +34,21 @@
     <eventsmenu :id="event.Id"></eventsmenu>
     <eventinfo v-if="info" :description="event.Description"></eventinfo>
     <eventtravel v-if="travel"></eventtravel>
+    <eventparticipants v-if="participants"></eventparticipants>
+>>>>>>> 032f1425fe5f0a667ee1b1a98b2b9ff81eb8c25e
   </div>
 </template>
 
-<script>
+  <script>
 import moment from 'moment';
 import eventsmenu from './eventsmenu.vue';
 import eventinfo from './eventinfo.vue';
 import eventtravel from './eventtravel.vue';
+import eventparticipants from './event-participants.vue';
+
 export default {
   data() {
     return {
-      msg: 'Hello world!',
       isSelected: false,
     }
   },
@@ -39,7 +58,8 @@ export default {
   components: {
     eventsmenu,
     eventinfo,
-    eventtravel
+    eventtravel,
+    eventparticipants,
   },
   filters: {
     formatdate(value) {
@@ -50,17 +70,18 @@ export default {
   },
   computed: {
     // Make this return true or false and have apply now button depending on that.
-    applicationopen: function () {
+    applicationopen: function() {
       let now = moment();
-      if (now.isBefore(this.event.ApplicationEndDate)) {
+      if (now.isBefore(this.event.applicationEndDate)) {
         return true;
       }
       else {
         return false;
       }
     },
+<<<<<<< HEAD
+=======
     info: function () {
-      console.log(this.$route.path);
       if (this.$route.path.indexOf("/info/" + this.event.Id) != -1) {
         return true;
       }
@@ -69,28 +90,37 @@ export default {
       }
     },
     travel: function () {
-      console.log(this.$route.path);
       if (this.$route.path.indexOf("/travel/" + this.event.Id) != -1) {
         return true;
       }
       else {
         return false;
       }
+    },
+    participants: function () {
+      if (this.$route.path.indexOf("/participants/" + this.event.Id) != -1) {
+        return true;
+      }
+      else {
+        return false;
+      }
     }
+>>>>>>> 032f1425fe5f0a667ee1b1a98b2b9ff81eb8c25e
   },
-  methods: {
-    toggleStar: function () {
-      console.log("toggleSTar");
-      this.$store.dispatch('toggleSelected', this.event.Id);
-    }
-  }
-
 }
 </script>
 
-<style>
+  <style>
 .event-details {
-  display: none;
+  color: #205E44 !important;
+}
+
+.event-name {
+  font-size: 20x;
+}
+
+.event-text {
+  color: #625750 !important;
 }
 
 .event-details-name {

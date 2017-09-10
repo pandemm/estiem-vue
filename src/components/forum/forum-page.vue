@@ -1,15 +1,11 @@
 <template>
     <div>
-        <router-link to="/forum/newtopic">
-            <v-btn primary light ripple>Start a new topic</v-btn>
-        </router-link>
-        <forum-thread-list></forum-thread-list>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
-import forumThreadList from './forum-thread-list.vue';
+import forumTopicList from './forum-topic-list.vue';
 export default {
     data() {
         return {
@@ -17,7 +13,10 @@ export default {
         }
     },
     components: {
-        forumThreadList
+        forumTopicList
+    },
+    created() {
+        this.$store.dispatch('fetchTopics');
     }
 }
 </script>

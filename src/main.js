@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Vuetify from 'vuetify'
+import BootstrapVue from 'bootstrap-vue'
 import store from './store';
 import router from './router';
 
-Vue.use(Vuetify)
+Vue.use(BootstrapVue)
 
 new Vue({
   el: '#app',

@@ -1,6 +1,17 @@
+# This file lists the files and folders that will not be added to git.
+
+# .vscode and other similar folders are personal editor specific configs
+.vscode
 .DS_Store
+# dist folder has the build result
+# It will not be in git, as it can be built from the source code, so it's not needed
 dist/
+
+# node_modules includes the dependencies for the app.
+# They will not be in git, as they will be automatically downloaded based on package.json
 node_modules/
+
+# log files user specific so they will not be in git
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

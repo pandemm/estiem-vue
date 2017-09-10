@@ -31,14 +31,14 @@ export default {
     methods: {
         postTopic() {
             console.log("posttopic");
-            let thread = {
+            let topic = {
                 userName: this.userName,
                 content: this.content,
                 title: this.title,
                 created: moment()
             }
-            this.$store.dispatch('addThread', thread);
-            // After succesfully posting a new thread go to the front page of the forum
+            this.$store.dispatch('addTopic', topic);
+            // After succesfully posting a new topic go to the front page of the forum
             this.$router.push('/forum');
         }
     }

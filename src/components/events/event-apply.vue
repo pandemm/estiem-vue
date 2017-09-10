@@ -1,16 +1,15 @@
 <template>
   <div id="event-apply">
     <h2>Application to {{this.event.Name}} in {{this.event.Place}}</h2>
-    <form>
+    <b-form-group>
       <span>Motivation text:</span>
       </br>
       <ckeditor :config="config" v-model="form.MotivationText"></ckeditor>
-      <v-checkbox class="checkbox" label="I am vegetarian" v-model="form.Vegetarian"></v-checkbox>
-      <v-checkbox class="checkbox" label="I do NOT eat pork" v-model="form.NoPork"></v-checkbox>
-      <v-checkbox class="checkbox" label="I agree to the terms and conditions" v-model="terms"></v-checkbox>
-      <v-btn @click.native="postApplication">Apply</v-btn>
-      <input type="submit" value="Submit">
-    </form>
+      <b-form-checkbox v-model="form.Vegetarian">I am vegetarian</b-form-checkbox>
+      <b-form-checkbox v-model="form.NoPork">I do NOT eat pork</b-form-checkbox>
+      <b-form-checkbox v-model="terms">I agree to the terms and conditions</b-form-checkbox>
+      <b-btn @click.native="postApplication">Apply</b-btn>
+    </b-form-group>
   </div>
 </template>
 
@@ -45,7 +44,7 @@ export default {
         Visa_Birthdate: moment(),
         Visa_Birthplace: "",
         Visa_Nationality: "",
-        Visa_PassportNumber: "", 
+        Visa_PassportNumber: "",
         Visa_PassportExpiryDate: moment(),
         Visa_PassportIssuedDate: moment(),
         Visa_PassportIssuedBy: "",
@@ -72,7 +71,7 @@ export default {
       }
       console.log("Post");
       let json = JSON.stringify(this.form);
-      axios.post('http://localhost:8081/internal/mvc/events/apply', json)
+      axios.post('/internal/eventsapi/apply', json)
         .then(function (response) {
           console.log(response);
         })

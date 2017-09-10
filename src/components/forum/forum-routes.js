@@ -1,18 +1,23 @@
 import forumNewTopic from './forum-new-topic.vue';
-import forumThreadList from './forum-thread-list.vue';
+import forumTopicList from './forum-topic-list.vue';
+import forumSingleTopic from './forum-topic.vue';
 
 const forumroutes = [
+  {
+    path: 'topics',
+    name: 'topics',
+    component: forumTopicList,
+  },
   {
     path: 'newtopic',
     name: 'newtopic',
     component: forumNewTopic,
   },
   {
-    path: 'threadlist',
-    name: 'threadList',
-    component: forumThreadList,
+    path: 'topic/:id',
+    name: 'singletopic',
+    component: forumSingleTopic,
   },
-
 ];
 
 export default forumroutes;

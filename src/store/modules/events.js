@@ -11,27 +11,44 @@ const getters = {
   events: () => state.events,
   internalEvents: () => state.events,
   event: (id) => {
-    console.log("getting")
     let event = state.events.find(event => event.Id == id);
-    console.log(event);
     return state.events.find(event => event.Id == id)
   },
   getEventById: (state, getters) => (id) => {
-    console.log(id);
     let event = state.events.find(event => event.Id == id);
+    return event;
+  },
+  getEventParticipantsById: (state, getters) => (id) => {
+    console.log(id);
+    this.getEventById(id);
+    let eps = state.events.find(event => event.Id == id);
     console.log(event);
     return event;
-  }
+  },
 };
 
 // Actions
 const actions = {
   fetchEvents({ commit }, params) {
     let events;
-    let url = 'https://www.estiem.org/Internal/mvc/events/getfutureevents';
+<<<<<<< HEAD
+    let url = 'http://new.estiem.org/api/eventsapi/getfutureevents';
+=======
+    let url = 'https://www.estiem.org/Internal/eventsapi/getfutureevents';
+>>>>>>> 032f1425fe5f0a667ee1b1a98b2b9ff81eb8c25e
     if (params.eventtypes) {
       url += '?';
     }
+    axios.get(url)
+      .then((response) => {
+        events = response.data;
+        commit('FETCH_EVENTS', events);
+      });
+  },
+  fetchEventParticipants({ commit }, id) {
+    let eps;
+    let url = 'https://www.estiem.org/Internal/eventsapi/geteventparticipants?ìd=' + id;
+    console.log(url);
     axios.get(url)
       .then((response) => {
         events = response.data;
@@ -51,19 +68,14 @@ const actions = {
 // Mutations
 const mutations = {
   'FETCH_EVENTS'(state, payload) {
-    console.log('mutate');
-    console.log(payload);
     state.events = payload;
   },
   'TOGGLE_SELECTED'(state, id) {
     let event = state.events.find(event => event.Id == id)
-    console.log(event);
-    console.log("toggleselect");
     if (!event.isSelected) {
       Vue.set(event, "isSelected", true)
     }
-    else 
-    {
+    else {
       event.isSelected = false;
     }
 
