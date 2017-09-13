@@ -2,16 +2,13 @@ import eventlist from './eventlist.vue';
 import eventinfo from './eventinfo.vue';
 import eventtravel from './eventtravel.vue';
 import eventApply from './event-apply.vue';
-<<<<<<< HEAD
 import eventDetails from './event-details.vue';
 import eventInformation from './event-information.vue';
-=======
->>>>>>> 032f1425fe5f0a667ee1b1a98b2b9ff81eb8c25e
 import eventParticipants from './event-participants.vue';
 
 const eventroutes = [
   {
-    path: '',
+    path: 'eventlist',
     name: 'eventlist',
     component: eventlist,
   },

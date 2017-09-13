@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding: 30px 0; margin: 0 5px;">
     <b-input-group size="md"  style="margin-bottom:20px;">
       <b-form-input v-model="searchString"></b-form-input>
       <b-input-group-button>
@@ -13,12 +13,12 @@
         </b-btn>
       </b-input-group-button>
     </b-input-group>
-    <div class="card-deck" style="justify-content: center;">
+    <b-card-group deck style="justify-content: center;">
       <template v-for="event in !searchString ? events : searchedEvents">
         <event :event="event" v-if="!event.isSelected"></event>
       </template>
 
-    </div>
+    </b-card-group>
   </div>
 </template>
 

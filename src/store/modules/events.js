@@ -31,11 +31,7 @@ const getters = {
 const actions = {
   fetchEvents({ commit }, params) {
     let events;
-<<<<<<< HEAD
     let url = 'http://new.estiem.org/api/eventsapi/getfutureevents';
-=======
-    let url = 'https://www.estiem.org/Internal/eventsapi/getfutureevents';
->>>>>>> 032f1425fe5f0a667ee1b1a98b2b9ff81eb8c25e
     if (params.eventtypes) {
       url += '?';
     }

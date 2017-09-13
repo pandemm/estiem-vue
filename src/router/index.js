@@ -18,7 +18,6 @@ Vue.use(Router);
 
 export default new Router({
   mode: 'history',
-  base: '/internal/',
   routes: [
     {
       path: '/',
@@ -27,11 +26,7 @@ export default new Router({
     },
     {
       path: '/events',
-<<<<<<< HEAD
       name: 'eventspage',
-=======
-      name: 'eventlist',
->>>>>>> 032f1425fe5f0a667ee1b1a98b2b9ff81eb8c25e
       component: eventspage,
       children: eventroutes,
     },
@@ -51,10 +46,10 @@ export default new Router({
       name: 'profile',
       component: profilePage,
     },
-    {
-      // Redirects all other paths to the homepage
-      path: '*',
-      redirect: '/',
-    },
+    // {
+    //   // Redirects all other paths to the homepage
+    //   path: '*',
+    //   redirect: '/',
+    // },
   ],
 });

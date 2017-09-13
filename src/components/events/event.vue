@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 <template>
-  <div class="card event-details" style="flex-basis:20%; flex-grow: 0; margin: 5px;">
+  <div class="card event-details" style="flex-basis:20%; flex-grow: 0; margin: 5px 5px;">
     <router-link class="card-link" :to="'/events/details/' + event.id">
       <img class="card-img-top" :src="'https://www.estiem.org/Internal/GetFile.aspx?File=Files/Committees/ITC/IT%20Project/images/' + event.place + '.jpg'" style="width:100%">
       <div class="card-block">
@@ -13,29 +12,6 @@
           <i class="material-icons" style="vertical-align:middle">check</i> Application open</div>
       </div>
     </router-link>
-=======
-  <template>
-  <div :id="'event' + event.Id" class="event-box">
-    <div style="display: flex;">
-      <div>
-        <span class="event-details-name">{{event.Name}} </span>
-        <span class="event-details-place">{{event.Place}}</span>
-        </br>
-        <span class="event-details-dates">{{event.StartDate | formatdate}} to {{event.EndDate | formatdate}}</span>
-        </br>
-      </Div>
-      <router-link v-if="applicationopen" :to="'/events/apply/' + event.Id">
-        <v-btn class="event-apply" outline>Apply</v-btn>
-      </router-link>
-      <v-btn icon class="event-star-button" @click.native="toggleStar">
-        <v-icon light right class="event-star text--darken-2" v-bind:class="{ selected: event.isSelected }">stars</v-icon>
-      </v-btn>
-    </div>
-    <eventsmenu :id="event.Id"></eventsmenu>
-    <eventinfo v-if="info" :description="event.Description"></eventinfo>
-    <eventtravel v-if="travel"></eventtravel>
-    <eventparticipants v-if="participants"></eventparticipants>
->>>>>>> 032f1425fe5f0a667ee1b1a98b2b9ff81eb8c25e
   </div>
 </template>
 
@@ -79,33 +55,6 @@ export default {
         return false;
       }
     },
-<<<<<<< HEAD
-=======
-    info: function () {
-      if (this.$route.path.indexOf("/info/" + this.event.Id) != -1) {
-        return true;
-      }
-      else {
-        return false;
-      }
-    },
-    travel: function () {
-      if (this.$route.path.indexOf("/travel/" + this.event.Id) != -1) {
-        return true;
-      }
-      else {
-        return false;
-      }
-    },
-    participants: function () {
-      if (this.$route.path.indexOf("/participants/" + this.event.Id) != -1) {
-        return true;
-      }
-      else {
-        return false;
-      }
-    }
->>>>>>> 032f1425fe5f0a667ee1b1a98b2b9ff81eb8c25e
   },
 }
 </script>
@@ -116,7 +65,7 @@ export default {
 }
 
 .event-name {
-  font-size: 20x;
+  font-size: 20px;
 }
 
 .event-text {

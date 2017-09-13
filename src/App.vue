@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div>
     <navbar></navbar>
     <div id="container">
@@ -12,52 +11,6 @@
 <script>
 import axios from 'axios';
 import navbar from './layout/navbar.vue'
-=======
-  <v-app>
-    <v-navigation-drawer :temporary="temporary" :permanent="!temporary" clipped v-model="drawer" :isActive='false' enable-resize-watcher :hide-overlay="true">
-      <v-list>
-        <v-list-item v-for="(item, i) in items" :key="i">
-          <v-list-tile value="true" :href="item.url" :router="item.router">
-            <v-list-tile-action>
-              <v-icon v-html="item.icon"></v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title v-text="item.title"></v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-toolbar fixed>
-      <v-toolbar-side-icon @click.native.stop="drawer=!drawer" v-if="temporary"></v-toolbar-side-icon>
-      <router-link to="/">
-        <img style="margin: auto;" src="https://www.estiem.org/Internal/Images/EstiemPortal/estiem_logo_frontpage.png" />
-      </router-link>
-      <v-spacer></v-spacer>
-      <v-btn icon @click.native.stop="rightDrawer = !rightDrawer">
-        <v-icon>search</v-icon>
-      </v-btn>
-    </v-toolbar>
-    <main>
-      <v-container fluid>
-        <v-slide-y-transition mode="out-in">
-          <v-layout>
-            <router-view class="content">
-            </router-view>
-          </v-layout>
-        </v-slide-y-transition>
-      </v-container>
-    </main>
-    <v-footer :fixed="fixed">
-      <span>&copy; 2017</span>
-    </v-footer>
-  </v-app>
-</template>
-
-<script>
-import estiemnavigationdrawer from './layout/estiemnavigationdrawer.vue'
-
->>>>>>> 032f1425fe5f0a667ee1b1a98b2b9ff81eb8c25e
 export default {
   data() {
     return {
@@ -81,28 +34,13 @@ export default {
     console.log(this.events);
     console.log("creatd");
   },
-<<<<<<< HEAD
   components: {
     navbar,
-=======
-  computed: {
-    temporary() {
-      console.log(window.innerWidth);
-      if (window.innerWidth > 1024) {
-        console.log("false");
-        return false;
-      }
-      else {
-        return true;
-      }
-    },
->>>>>>> 032f1425fe5f0a667ee1b1a98b2b9ff81eb8c25e
   }
 }
 </script>
 
 <style lang="stylus">
-<<<<<<< HEAD
 @import './stylus/main'
 
 
@@ -118,7 +56,7 @@ https://work.smarchal.com/twbscolor/css/e74c3cc0392becf0f1ffbbbc0
 .card-footer img {width:75%}
 
 #container {
-  padding:30px 0px; 
+  // padding:30px 0px; 
   margin-top:80px; 
   }
 a {color:#625750}
@@ -180,49 +118,4 @@ a:hover {color:#625750;}
 
 .event-buttons {margin:auto; text-align:center; max-width:700px}
 .event-buttons button {margin:10px; width:200px; height:100px; border:none}
-=======
-  @import './stylus/base.styl'
-
-.toolbar {
-  background-color: estiem-green;
-}
-
-#toolbar-search {
-  color: white;
-}
-
-.footer {
-  background-color: primaryColor  
-}
-
-.content {
-  width: 800px;
-}
-
-.layout {
-  justify-content: center;
-}
-
-// Workaround that the content doesnt go under the drawer. A fix should be released later in Vuetify.
-.navigation-drawer
-  &--persistent, &--permanent
-    &.navigation-drawer--open:not(.navigation-drawer--is-mobile):not(.navigation-drawer--right)
-      &:not(.navigation-drawer--clipped)
-        ~ .toolbar
-          padding-left: 300px
-
-      ~ main,
-      ~ .footer:not(.footer--fixed):not(.footer--absolute)
-        padding-left: 300px
-
-    &.navigation-drawer--open.navigation-drawer--right
-      &:not(.navigation-drawer--clipped)
-        + .toolbar
-          padding-right: 300px
-
-      ~ main,
-      ~ .footer:not(.footer--fixed):not(.footer--absolute)
-        padding-right: 300px
-
->>>>>>> 032f1425fe5f0a667ee1b1a98b2b9ff81eb8c25e
 </style>
