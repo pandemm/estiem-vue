@@ -1,6 +1,9 @@
 <template>
     <div>
-        <h2 style="text-align: center;">{{event.Name}}</h2>
+        <h2 style="text-align: center;">{{event.name}}</h2>
+        <div v-html="event.description">
+
+        </div>
     </div>
 </template>
 
@@ -12,7 +15,6 @@ export default {
     },
     computed: {
         event() {
-            console.log(this.$route.params.id);
             return this.$store.getters.getEventById(this.$route.params.id);
         },
     },
@@ -21,4 +23,5 @@ export default {
 </script>
 
 <style>
+
 </style>

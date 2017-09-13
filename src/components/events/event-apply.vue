@@ -1,12 +1,12 @@
 <template>
   <div id="event-apply">
-    <h2>Application to {{this.event.Name}} in {{this.event.Place}}</h2>
+    <h2>Application to {{this.event.name}} in {{this.event.place}}</h2>
     <b-form-group>
       <span>Motivation text:</span>
       </br>
-      <ckeditor :config="config" v-model="form.MotivationText"></ckeditor>
-      <b-form-checkbox v-model="form.Vegetarian">I am vegetarian</b-form-checkbox>
-      <b-form-checkbox v-model="form.NoPork">I do NOT eat pork</b-form-checkbox>
+      <ckeditor :config="config" v-model="form.motivationText"></ckeditor>
+      <b-form-checkbox v-model="form.vegetarian">I am vegetarian</b-form-checkbox>
+      <b-form-checkbox v-model="form.noPork">I do NOT eat pork</b-form-checkbox>
       <b-form-checkbox v-model="terms">I agree to the terms and conditions</b-form-checkbox>
       <b-btn @click.native="postApplication">Apply</b-btn>
     </b-form-group>
@@ -65,27 +65,28 @@ export default {
   },
   methods: {
     postApplication: function () {
-      if (this.validatePost() == false) {
-        console.log("false");
-        return false;
-      }
-      console.log("Post");
-      let json = JSON.stringify(this.form);
-      axios.post('/internal/eventsapi/apply', json)
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
-    validatePost: function () {
-      console.log("val");
-      if (!this.terms) {
-        console.log("notvalid");
-        return false;
-      }
-    }
+      return true;
+    //   if (this.validatePost() == false) {
+    //     console.log("false");
+    //     return false;
+    //   }
+    //   console.log("Post");
+    //   let json = JSON.stringify(this.form);
+    //   axios.post('/internal/eventsapi/apply', json)
+    //     .then(function (response) {
+    //       console.log(response);
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error);
+    //     });
+    // },
+    // validatePost: function () {
+    //   console.log("val");
+    //   if (!this.terms) {
+    //     console.log("notvalid");
+    //     return false;
+    //   }
+    // }
   }
 
 }

@@ -24,7 +24,7 @@ const eventroutes = [
   },
   {
     path: 'participants/:id',
-    name: 'travel',
+    name: 'participants',
     component: eventParticipants,
   },
   {
@@ -41,11 +41,6 @@ const eventroutes = [
     path: 'information/:id',
     name: 'information',
     component: eventInformation
-  },
-  {
-    path: 'participants/:id',
-    name: 'participants',
-    component: eventParticipants
   },
 ];
 

@@ -25,14 +25,11 @@ export default {
     }
   },
   created() {
-    console.log("creatd");
     let params = {
       eventtypes: 'all',
     };
     this.$store.dispatch('fetchEvents', params);
     this.$store.dispatch('getUser');
-    console.log(this.events);
-    console.log("creatd");
   },
   components: {
     navbar,

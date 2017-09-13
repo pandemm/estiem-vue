@@ -2,12 +2,12 @@
     <div v-if="ready">
         <h2 style="text-align: center;">{{event.Name}}</h2>
         <div class="event-buttons">
-            <router-link :to="'/events/information/' + event.Id" style="text-decoration: none;">
+            <router-link :to="'/events/information/' + event.id" style="text-decoration: none;">
                 <button type="button" class="btn btn-primary btn-lg" style="background: rgb(165, 201, 187); color: #205e44;">
                     <i class="material-icons" style="vertical-align:middle; font-size:36px;">info</i><br>Information
                 </button>
             </router-link>
-            <router-link :to="'/events/apply/' + event.Id" style="text-decoration: none;">
+            <router-link :to="'/events/apply/' + event.id" style="text-decoration: none;">
                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#event-information" style="background: rgb(165, 201, 187); color: #205e44;">
                     <i class="material-icons" style="vertical-align:middle; font-size:36px;">input</i><br>Application
                 </button>
@@ -48,15 +48,25 @@ export default {
     data() {
         return {
             ready: false,
+            ev: {}
         }
     },
     computed: {
         event() {
             console.log(this.$route.params.id);
             this.ready = true;
-            return this.$store.getters.getEventById(this.$route.params.id);
+            let id = this.$route.params.id;
+            console.log(id)
+            return this.$store.getters.getEventById(id);
         },
     },
+    mounted() {
+        console.log(this.$route.params.id);
+        this.ready = true;
+        let id = this.$route.params.id;
+        console.log(id)
+        this.ev = this.$store.getters.event(id);
+    }
 
 }
 </script>
