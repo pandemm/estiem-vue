@@ -1,8 +1,8 @@
 <template>
-    <gmap-map v-if="mapIsVisible":center="center" :zoom="4" style="width: 1000px; height: 600px">
+    <gmap-map v-if="mapIsVisible":center="center" :zoom="4" :style="'width: 100%; height: ' + height + 'px'">
 
         <gmap-marker :key="index" v-for="(m, index) in lgs" :position="m.position" :clickable="true" @click="m.infoWinOpen=!m.infoWinOpen">
-            <gmap-info-window :opened="m.infoWinOpen">{{m.infoWinText}}</gmap-info-window>
+            <gmap-info-window :opened="m.infoWinOpen"><lg-info v-bind="m"></lg-info></gmap-info-window>
         </gmap-marker>
     </gmap-map>
 </template>
@@ -11,6 +11,7 @@
 import axios from 'axios'
 import * as VueGoogleMaps from 'vue2-google-maps';
 import Vue from 'vue';
+import lgInfo from './localgroup-info.vue';
 
 Vue.use(VueGoogleMaps, {
     load: {
@@ -34,11 +35,15 @@ export default {
             }]
         }
     },
+    components: { lgInfo },
     computed: {
         event() {
             console.log(this.$route.params.id);
             return this.$store.getters.getEventById(this.$route.params.id);
         },
+        height() {
+            return window.innerHeight - 86;
+        }
     },
     created() {
         axios.get('http://new.estiem.org/api/localgroupapi/localgroup')
@@ -52,7 +57,6 @@ export default {
                                         }
                 )
                     .map((lg) => {
-                        console.log(lg)
                         if (lg.gpslocation !== null) {
                             return {
                                 position: {
@@ -60,7 +64,8 @@ export default {
                                     lng: Number(lg.gpslocation.split(',')[1])
                                 },
                                 infoWinOpen: false,
-                                infoWinText: lg.name
+                                infoWinText: lg.name,
+                                lg
                             }
                         }
                     });
