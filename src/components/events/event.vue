@@ -1,7 +1,7 @@
 <template>
   <div class="card event-details" style="flex-basis:20%; flex-grow: 0; margin: 5px 5px;">
     <router-link class="card-link" :to="'/events/details/' + event.id">
-      <img class="card-img-top" :src="'https://www.estiem.org/Internal/GetFile.aspx?File=Files/Committees/ITC/IT%20Project/images/' + event.place + '.jpg'" style="width:100%">
+      <img class="card-img-top" :src="'https://www.estiem.org/GetFile.aspx?File=Files/Committees/ITC/IT%20Project/images/' + event.place + '.jpg'" style="width:100%">
       <div class="card-block">
         <h4 class="card-title event-name">{{event.name}}</h4>
         <div class="card-text event-text">
