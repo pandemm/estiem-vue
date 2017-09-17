@@ -11,18 +11,15 @@ const getters = {
   events: () => state.events,
   internalEvents: () => state.events,
   event: (id) => {
-    let event = state.events.find(event => event.Id == id);
-    return state.events.find(event => event.Id == id)
+    return state.events.find(event => event.id == id)
   },
   getEventById: (state, getters) => (id) => {
-    let event = state.events.find(event => event.Id == id);
+    let event = state.events.find(event => event.id == id);
     return event;
   },
   getEventParticipantsById: (state, getters) => (id) => {
-    console.log(id);
     this.getEventById(id);
     let eps = state.events.find(event => event.Id == id);
-    console.log(event);
     return event;
   },
 };
