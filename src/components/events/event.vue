@@ -1,15 +1,15 @@
 <template>
   <div class="card event-details" style="flex-basis:20%; flex-grow: 0; margin: 5px 5px;">
     <router-link class="card-link" :to="'/events/details/' + event.id">
-      <img class="card-img-top" :src="'https://www.estiem.org/GetFile.aspx?File=Files/Committees/ITC/IT%20Project/images/' + event.place + '.jpg'" style="width:100%">
+      <img class="card-img-top" :src="imageUrl" style="width:100%">
       <div class="card-block">
         <h4 class="card-title event-name">{{event.name}}</h4>
         <div class="card-text event-text">
           <i class="material-icons" style="vertical-align:middle">date_range</i>
           {{event.startDate | formatdate}} to {{event.endDate | formatdate}} </br>
-          <i class="material-icons" style="vertical-align:middle">place</i>{{event.place}}</div>
-        <div v-if="applicationopen" class="card-text event-text">
-          <i class="material-icons" style="vertical-align:middle">check</i> Application open</div>
+          <i class="material-icons" style="vertical-align:middle">place</i> {{event.place}}</div>
+        <div class="card-text event-text">
+          <i class="material-icons" style="vertical-align:middle">check</i>{{applicationOpen}}</div>
       </div>
     </router-link>
   </div>
@@ -45,16 +45,26 @@ export default {
     }
   },
   computed: {
-    // Make this return true or false and have apply now button depending on that.
-    applicationopen: function() {
+    applicationOpen: function() {
       let now = moment();
       if (now.isBefore(this.event.applicationEndDate)) {
-        return true;
+        return "Application open";
       }
       else {
-        return false;
+        return "Application closed";
       }
     },
+    imageUrl: function() {
+      if (this.event.parentGroupId == 35 || this.event.parentGroupId == 36 || this.event.parentGroupId == 37) {
+        return 'https://www.estiem.org/GetFile.aspx?File=Images/ITProject/istanbul.jpg'
+      }
+      else if (this.event.parentGroupId == 85 || this.event.parentGroupId == 74) {
+        return 'https://www.estiem.org/GetFile.aspx?File=Images/ITProject/izmir.jpg'
+      }
+      else {
+        return 'https://www.estiem.org/GetFile.aspx?File=Images/ITProject/' + this.event.place + '.jpg'
+      }
+    }
   },
 }
 </script>

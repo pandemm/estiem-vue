@@ -1,23 +1,9 @@
 <template>
   <div style="padding: 30px 0; margin: 0 5px;">
-    <b-input-group size="md"  style="margin-bottom:20px;">
-      <b-form-input v-model="searchString"></b-form-input>
-      <b-input-group-button>
-        <b-btn>
-          <i class="material-icons" style="vertical-align:middle">map</i>
-        </b-btn>
-      </b-input-group-button>
-      <b-input-group-button>
-        <b-btn>
-          <i class="material-icons" style="vertical-align:middle">search</i>
-        </b-btn>
-      </b-input-group-button>
-    </b-input-group>
     <b-card-group deck style="justify-content: center;">
       <template v-for="event in !searchString ? events : searchedEvents">
         <event :event="event" v-if="!event.isSelected"></event>
       </template>
-
     </b-card-group>
   </div>
 </template>
@@ -32,23 +18,66 @@ export default {
       searchString: '',
     }
   },
+  props: {
+    count: {
+      default: 30
+    },
+    applicationOpen: {
+      default: false,
+    },
+    alumni: {
+      default: false,
+    },
+    exchanges: {
+      default: false,
+    },
+    searchString: {
+      default: ''
+    }
+  },
   components: {
     event
   },
   computed: {
     events() {
       let events = this.$store.getters.events
-      events.sort( (a, b) => { 
+      events.sort((a, b) => {
         console.log(a.startDate - b.startDate)
-        return new Date(a.startDate) - new Date(b.startDate) })
+        return new Date(a.startDate) - new Date(b.startDate)
+      })
+      if(this.applicationOpen)
+      {
+      events = this.getApplicationOpen(events);
+      }
+
+      events = this.filterAlumni(events);
+      events = this.filterExchanges(events);
+      events = events.slice(0, this.count);
       return events;
     },
     searchedEvents() {
-      return this.events.filter(a => a.Name.toLowerCase().includes(this.searchString.toLowerCase()));
-    }
+      return this.events.filter(a => a.name.toLowerCase().includes(this.searchString.toLowerCase()));
+    },
+
   },
+  methods: {
+    getApplicationOpen(events) {
+      let now = moment();
+      events = events.filter(e => now.isSameOrBefore(e.applicationEndDate))
+      return events;
+    },
+    filterAlumni(events) {
+      events = events.filter(e => e.eventType != 12)
+      return events;
+    },
+    filterExchanges(events) {
+      events = events.filter(e => e.eventType != 9)
+      return events;
+    }
+  }
 }
 </script>
 
 <style>
+
 </style>

@@ -64,31 +64,30 @@ export default {
     Ckeditor,
   },
   methods: {
-    postApplication: function () {
+    postApplication: function() {
       return true;
-    //   if (this.validatePost() == false) {
-    //     console.log("false");
-    //     return false;
-    //   }
-    //   console.log("Post");
-    //   let json = JSON.stringify(this.form);
-    //   axios.post('/internal/eventsapi/apply', json)
-    //     .then(function (response) {
-    //       console.log(response);
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error);
-    //     });
-    // },
-    // validatePost: function () {
-    //   console.log("val");
-    //   if (!this.terms) {
-    //     console.log("notvalid");
-    //     return false;
-    //   }
-    // }
+      //   if (this.validatePost() == false) {
+      //     console.log("false");
+      //     return false;
+      //   }
+      //   console.log("Post");
+      //   let json = JSON.stringify(this.form);
+      //   axios.post('/internal/eventsapi/apply', json)
+      //     .then(function (response) {
+      //       console.log(response);
+      //     })
+      //     .catch(function (error) {
+      //       console.log(error);
+      //     });
+      // },
+      // validatePost: function () {
+      //   console.log("val");
+      //   if (!this.terms) {
+      //     console.log("notvalid");
+      //     return false;
+      //   }
+    }
   }
-
 }
 </script>
 

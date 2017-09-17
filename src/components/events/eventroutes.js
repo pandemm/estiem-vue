@@ -1,4 +1,4 @@
-import eventlist from './eventlist.vue';
+import eventlist from './event-list-page.vue';
 import eventinfo from './eventinfo.vue';
 import eventtravel from './eventtravel.vue';
 import eventApply from './event-apply.vue';
