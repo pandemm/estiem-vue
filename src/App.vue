@@ -44,7 +44,9 @@ export default {
 /* 
 https://work.smarchal.com/twbscolor/css/e74c3cc0392becf0f1ffbbbc0
 */
-
+.page {
+    padding-top: 10px;
+}
 
 /* CARDS!! */
 
