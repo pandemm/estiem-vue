@@ -1,9 +1,10 @@
 <template>
     <gmap-map v-if="mapIsVisible":center="center" :zoom="4" :style="'width: 100%; height: ' + height + 'px'">
-
-        <gmap-marker :key="index" v-for="(m, index) in lgs" :position="m.position" :clickable="true" @click="m.infoWinOpen=!m.infoWinOpen">
+        <template  v-for="(m, index) in lgs">
+        <gmap-marker :key="index" :position="m.position" :clickable="true" @click="openInfoBox(m)">
             <gmap-info-window :opened="m.infoWinOpen"><lg-info v-bind="m"></lg-info></gmap-info-window>
         </gmap-marker>
+        </template>
     </gmap-map>
 </template>
 
@@ -25,24 +26,18 @@ export default {
             mapIsVisible: false,
             lgs: [],
             center: { lat: 53.0, lng: 15.0 },
-            markers: [{
-                position: { lat: 61.3, lng: 23.46 },
-                infoWinOpen: false,
-                infoWinText: 'Tampere'
-            }, {
-                position: { lat: 11.0, lng: 11.0 },
-                infoWinOpen: false,
-            }]
         }
     },
     components: { lgInfo },
     computed: {
-        event() {
-            console.log(this.$route.params.id);
-            return this.$store.getters.getEventById(this.$route.params.id);
-        },
         height() {
             return window.innerHeight - 86;
+        }
+    },
+    methods: {
+        openInfoBox(lg) {
+            this.lgs.forEach(lg => lg.infoWinOpen = false)
+            lg.infoWinOpen= true;
         }
     },
     created() {
